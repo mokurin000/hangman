@@ -44,7 +44,7 @@ fn game_round(words: &[String], rng: &mut ThreadRng) -> Result<()> {
     } else {
         println!("~~~ 😢 Oops, out of tries! ~~~");
     }
-    println!("Target word: {}", game_state);
+    println!("Target word: {}", game_state.target_word());
 
     println!("----- ROUND END! -----");
     println!();

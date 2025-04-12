@@ -9,14 +9,14 @@ As the goal of hangman is to guess all letters from a word, we record current st
 Also, we implemented serveral methods on the `State` structure:
 
 - `from_word` constructs new blank `State` with a target word, leave non-alphabetics unchanged, otherwise replace with underscore (`_`) in the `Vec<char>`.
-    - We could call `str::chars` for `target`, to iterate over chracters inside it. Meanwhile, we could determine each character by `char::is_alphabetic`.
+  - We could call `str::chars` for `target`, to iterate over chracters inside it. Meanwhile, we could determine each character by `char::is_alphabetic`.
 - `guess` accepts a `&str` argument `guess_try`.
-    - returns a boolean, representing success/failure of a guess.
-    - First, we `match` length of `guess_try`. If it's of single character, we handle this as single alpha guess: iterate over `self.target` and get corresponding index by `enumerate` method on `Chars`. Otherwise, we should determine `&self.target == guess_try`, validation of whole-word guess here is much more straight forward.
-    - To make guesses case-insentive, we could call `char::to_ascii_lowercase` and `str::to_lowercase`, before equality checks.
+  - returns a boolean, representing success/failure of a guess.
+  - First, we `match` length of `guess_try`. If it's of single character, we handle this as single alpha guess: iterate over `self.target` and get corresponding index by `enumerate` method on `Chars`. Otherwise, we should determine `&self.target == guess_try`, validation of whole-word guess here is much more straight forward.
+  - To make guesses case-insentive, we could call `char::to_ascii_lowercase` and `str::to_lowercase`, before equality checks.
 - `is_completed` checks whether the user guessed all letters.
-    - We could just `collect` an iterator of `char`'s from `self.guess` to a single `String`, and check if it equals to the target word.
-- `target` returns target word of this game round.
+  - We could just `collect` an iterator of `char`'s from `self.guess` to a single `String`, and check if it equals to the target word.
+- `target_word` returns target word of this game round.
 
 To display the `State`, we simply implement `Display` for the `State`.
 
